@@ -6,19 +6,19 @@ import base64
 from PIL import Image
 
 
-def index(request):
-    return HttpResponse("欢迎来到水声射线模拟系统")
+# def home(request):
+#     return HttpResponse("欢迎来到水声射线模拟系统-正在跳转...")
 def Page01(request):
     #优先去根目录的templates中寻找html文件（需要在setting文件中配置）
     #去app01目录下面的templates文件寻找html文件（根据app的注册顺序逐一从templates文件中寻找）
 
     return render(request,"MainPage.html")
 
-def tpl(request):
+def task_02(request):
     #name="bellhop"
     #data=["射线模拟","水声信号"]
     #data_info={"name":"刘炜","role":"web前端开发"}
-    #return render(request,"tpl.html",{"n1":name, "n2":data,"n3":data_info})
+    #return render(request,"task_02.html",{"n1":name, "n2":data,"n3":data_info})
     #启动 MATLAB 引擎
     eng = matlab.engine.start_matlab()
     eng.cd('E:\MatlabWorkPlace\参考1_BELLHOP_General_Description\Task_GD_2_Gauss', nargout=0)
@@ -51,7 +51,7 @@ def tpl(request):
     image_base64 = base64.b64encode(image_stream.getvalue()).decode('utf-8')
 
     #将图像数据传递到模板
-    return render(request, 'tpl.html', {'image_data': image_base64})
+    return render(request, 'task_02.html', {'image_data': image_base64})
 
 def Page02(request):
     #获取请求方式 GET/POST

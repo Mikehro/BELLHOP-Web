@@ -23,8 +23,8 @@ engine = matlab.engine.start_matlab()
 urlpatterns = [
     #path("admin/", admin.site.urls),
     #www.xxx.com/index/->函数
-    path("index/", views.index),
-    path("Page01/", views.Page01),
-    path("tpl/", views.tpl),
+    #path("", views.home),
+    path("", views.Page01),
+    path("task_02/", views.task_02),
     path("Page02",views.Page02)
 ]
