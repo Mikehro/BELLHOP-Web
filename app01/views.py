@@ -14,6 +14,43 @@ def Page01(request):
 
     return render(request,"MainPage.html")
 
+def task_01(request):
+    # 启动 MATLAB 引擎
+    eng = matlab.engine.start_matlab()
+    eng.cd('E:\MatlabWorkPlace\参考1_BELLHOP_General_Description\Task_GD_1_flat', nargout=0)
+
+    # 执行 MATLAB 脚本文件
+    eng.eval("run('command_draft_Task1_Munk_flat.m');", nargout=0)
+    # 循环获取当前图形句柄
+    # num = 3
+    # while(num>0):
+
+    fig_handle = eng.gcf()
+
+    # 将图像数据传输到 Python 中
+    matlab_image_data = eng.getframe(fig_handle, nargout=1)
+    # 检查数据类型并转换为 NumPy 数组
+    if isinstance(matlab_image_data, dict) and 'cdata' in matlab_image_data:
+        matlab_image = np.asarray(matlab_image_data['cdata'], dtype=np.uint8)
+    else:
+        raise ValueError("Unexpected image data format from MATLAB")
+
+    # 关闭 MATLAB 引擎
+    eng.quit()
+
+    # 将图像数据转换为 PIL 图像对象
+    image = Image.fromarray(matlab_image)
+    image.show()
+
+    # 将 PIL 图像对象转换为字节流
+    image_stream = BytesIO()
+    image.save(image_stream, format='PNG')  # 你可以根据实际情况选择图像格式
+
+    # 获取字节流的 Base64 编码
+    image_base64 = base64.b64encode(image_stream.getvalue()).decode('utf-8')
+
+    # 将图像数据传递到模板
+    return render(request, 'task_01.html', {'image_data': image_base64})
 def task_02(request):
     #name="bellhop"
     #data=["射线模拟","水声信号"]

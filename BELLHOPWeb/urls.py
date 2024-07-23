@@ -25,6 +25,7 @@ urlpatterns = [
     #www.xxx.com/index/->函数
     #path("", views.home),
     path("", views.Page01),
+    path("task_01/", views.task_01),
     path("task_02/", views.task_02),
     path("Page02",views.Page02)
 ]
