@@ -27,5 +27,6 @@ urlpatterns = [
     path("", views.Page01),
     path("task_01/", views.task_01),
     path("task_02/", views.task_02),
+    path("task_03/", views.task_03),
     path("Page02",views.Page02)
 ]
