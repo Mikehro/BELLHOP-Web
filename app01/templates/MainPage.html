@@ -9,16 +9,74 @@
     <script src="{% static 'js/jquery-3.5.1.min.js`' %}"></script>
     <script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.js' %}"></script>
     <style type="text/css">
-        h1{
-            color: white;
-            background-image: linear-gradient(to right, darkblue , cadetblue);
-            opacity: 0.3;
+        body{
+            background: black;
         }
-        #btn{
-            background-image: linear-gradient(to right, blue , cornflowerblue);
-            opacity: 0.6;
-            height:100px;
+        .flicker{
+		   color:#9966FF; /*设置文字颜色*/
+		   font-size:64px; /*设置字体大小*/
+		   font-weight:bolder; /*设置字体粗细*/
+		    -webkit-animation: flicker 2s infinite;    /*设置动画*/
+		}
+		@-webkit-keyframes flicker{                    /*创建动画*/
+		    0%{
+		        opacity: 1;
+		    }
+		    50%{
+		        opacity: 0.5;
+		    }
+		    100%{
+		        opacity: 1;
+		    }
+
+		}
+
+        #btnback{
+            {#background-image: linear-gradient(to right, #9966FF ,blue);#}
+            {#opacity: 0.6;#}
+            {#height:150px;#}
+            {#position: relative;#}
+            {#align-items: center;#}
+            {#min-height: 10vh;#}
+            {#background-color: rgb(118, 218, 255);#}
+            {#overflow: hidden;#}
+            {##}
+            {#&:before, &:after {#}
+            {#    content: "";#}
+            {#    position: absolute;#}
+            {#    left: 50%;#}
+            {#    min-width: 30vw;#}
+            {#    min-height: 30vw;#}
+            {#    background-color: #fff;#}
+            {#    animation-name: rotate;#}
+            {#    animation-iteration-count: infinite;#}
+            {#    animation-timing-function: linear;#}
+            {# }#}
+            {##}
+            {#&:before {#}
+            {#    bottom: 15vh;#}
+            {#    border-radius: 45%;#}
+            {#    animation-duration: 10s;#}
+            {# }#}
+            {##}
+            {#&:after {#}
+            {#    bottom: 12vh;#}
+            {#    opacity: .5;#}
+            {#    border-radius: 47%;#}
+            {#    animation-duration: 10s;#}
+            {# }#}
         }
+        {#@keyframes rotate {#}
+        {#    0% {#}
+        {#        transform: translate(-50%, 0) rotateZ(0deg);#}
+        {#    }#}
+        {#    50% {#}
+        {#        transform: translate(-50%, -2%) rotateZ(180deg);#}
+        {#    }#}
+        {#    100% {#}
+        {#        transform: translate(-50%, 0%) rotateZ(360deg);#}
+        {#    }#}
+        {# } #}
         .count-1{
             margin-top: 33px;
         }
@@ -32,27 +90,61 @@
             height:600px;
         }
         .right{
-            float: right;
+            {#float: right;#}
             width: 600px;
             height: 300px;
         }
-        p{
+
+        #text_1{
+            text-align: center;
             padding: 150px 0;
             color:blue;
             font-size: 50px;
         }
+        #btn{
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color:#fff;
+            background-color: cornflowerblue;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+        #btn:hover{
+            background-color: #9966ff;
+        }
+        #btn:active{
+            background-color: #1795bb;
+            box-shadow: 0 5px #666;
+            transform:translateY(4px);
+        }
+        .gif{
+            margin-top: 30px;
+            text-align: center;
+
+        }
     </style>
 </head>
 <body>
-<h1 style="text-align: center;">主界面</h1>
-<div style="text-align: center" id="btn">
-    <input type="button" class="count-1" value="开始计算_task1" onclick='location.href=("../task_01")'>
-    <input type="button" class="count-2" value="开始计算_task2" onclick='location.href=("../task_02")'>
-    <input type="button" class="count-3" value="开始计算_task3" onclick='location.href=("../task_03")'>
+<h1 style="text-align: center;" class="flicker">主界面</h1>
+<div style="text-align: center" id="btnback">
+    <input type="button" class="btn-database" id="btn" value="进入数据库" onclick='location.href=("../DatabasePage")'>
+    <input type="button" class="count-1" id="btn" value="开始计算_task1" onclick='location.href=("../task_01")'>
+    <input type="button" class="count-2" id="btn" value="开始计算_task2" onclick='location.href=("../task_02")'>
+    <input type="button" class="count-3" id="btn" value="开始计算_task3" onclick='location.href=("../task_03")'>
 </div>
-<div class="left"><img src="{% static 'img/1.jpg' %}" id="img_01"></div>
-<div class="right"><p>摸鱼就要摸的透彻</p></div>
-
+<div class="gif"><img src="{% static 'img/beach.gif' %}" id="img_01"></div>
+{#<div class="right"><p id="text_1">摸鱼就要摸的透彻</p></div>#}
+{#<div>#}
+{#    <p id="text_2">#}
+{#        数据库管理#}
+{#    </p>#}
+{#</div>#}
 
 </body>
 </html>
